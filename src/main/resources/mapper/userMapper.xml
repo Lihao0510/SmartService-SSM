@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指定我们的到具体的bean -->
+<mapper namespace="com.lihao.dao.UserDao">
+
+    <resultMap type="SysUser" id="SysUserMapper">
+        <id property="userId" column="user_id" javaType="int" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" javaType="String" jdbcType="VARCHAR"/>
+        <result property="userPwd" column="user_pwd" javaType="String" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_tel" javaType="String" jdbcType="VARCHAR"/>
+        <result property="userEamil" column="user_email" javaType="String" jdbcType="VARCHAR"/>
+        <result property="userDesc" column="user_desc" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--查找全部User-->
+    <select id="select" resultType="SysUser" resultMap="SysUserMapper">
+    SELECT
+    user_id, user_name, user_pwd, user_tel, user_email, user_desc
+    FROM
+    `user`
+    WHERE user_id &lt; 10050
+    </select>
+</mapper>
